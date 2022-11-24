@@ -1,5 +1,6 @@
 package com.dio.cadastrousuarios;
 
+//import com.dio.cadastrousuarios.entity.Usuario;
 import com.dio.cadastrousuarios.entity.Usuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
