@@ -30,10 +30,14 @@ public class UsuarioService {
     }
 
     public UsuarioDTO salvarUser(UsuarioDTO usuarioDTO) throws Exception{
-        Usuario usuario = new Usuario();
-        usuario = usuarioRepo.save(usuario.convert(usuarioDTO));
-        return usuarioDTO.convert(usuario);
+        Usuario usuario = null;
+            if (usuarioDTO != null) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(usuarioDTO).getBody();
+            }
+            usuario = usuarioRepo.save(Usuario.convert(usuarioDTO));
+        return UsuarioDTO.convert(usuario);
     }
+
 
     public ResponseEntity<Usuario> getOne(Long identificador){
         Optional<Usuario> usuario = usuarioRepo.findByIdentificador(identificador);

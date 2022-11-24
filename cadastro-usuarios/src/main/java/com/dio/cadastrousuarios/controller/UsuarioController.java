@@ -28,12 +28,10 @@ public class UsuarioController {
     }
 
     @PostMapping
-    ResponseEntity<UsuarioDTO>saveUserCTRL(@RequestBody UsuarioDTO usuarioDTO) throws Exception {
-        if (usuarioDTO != null) {
-            JOptionPane.showMessageDialog(null, "Usuario Já Cadastrado");
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(usuarioDTO);
-        } usuarioService.salvarUser(usuarioDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioDTO);
+    public UsuarioDTO cadastrarInovacao(@RequestBody UsuarioDTO usuarioDTO) throws Exception {
+		return usuarioService.salvarUser(usuarioDTO);
+
+
     }
 
     @GetMapping("/{identificador}") /*Uma Forma de Fazer*/

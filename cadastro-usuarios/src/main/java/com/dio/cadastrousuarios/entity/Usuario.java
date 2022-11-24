@@ -20,7 +20,7 @@ import java.util.UUID;
 @Table(name = "tbl_user")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user")
     private UUID id;
     @Column(name = "nome", length = 50, nullable = false)
