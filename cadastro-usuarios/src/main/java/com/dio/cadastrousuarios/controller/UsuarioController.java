@@ -4,6 +4,9 @@ import com.dio.cadastrousuarios.dto.UsuarioDTO;
 import com.dio.cadastrousuarios.entity.Usuario;
 import com.dio.cadastrousuarios.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +23,8 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @GetMapping
-    ResponseEntity<Object>allUserCTRL(@RequestBody UsuarioDTO usuarioDTO){
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioDTO);
+    ResponseEntity<Object>allUserCTRL(@PageableDefault(page = 0,size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll(pageable));
     }
 
     @PostMapping
